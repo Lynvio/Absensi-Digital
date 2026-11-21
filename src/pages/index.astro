@@ -1,0 +1,20 @@
+---
+import TataLetakUtama from '../layouts/TataLetakUtama.astro';
+import App from '../aplikasi/App';
+---
+
+<TataLetakUtama>
+  <App client:only="react">
+    <div slot="fallback" class="pemuat-awal" role="status" aria-label="Memuat aplikasi">
+      <img
+        src="/assets/logo/logo-sekolah.svg"
+        alt="Logo Sekolah"
+        class="logo-pemuat"
+        width="72"
+        height="72"
+        fetchpriority="high"
+      />
+      <div class="shimmer-bar" aria-hidden="true"></div>
+    </div>
+  </App>
+</TataLetakUtama>

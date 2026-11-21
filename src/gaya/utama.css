@@ -1,0 +1,607 @@
+/* stylelint-disable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    /* Palet Modern Premium: Latar Netral #f2f4f7 & Kartu Bersih #ffffff */
+    --warna-latar-aplikasi: #f2f4f7;
+    --warna-kartu: #ffffff;
+    --warna-panel: #f2f4f7;
+    --warna-garis: #e2e8f0;
+    --warna-teks: #0f172a;
+    --warna-teks-redup: #475569;
+    --warna-border-fokus: #4f46e5;
+    /* Sidebar: putih bersih #ffffff dengan border halus 1px */
+    --sidebar-bg: #ffffff;
+    --sidebar-border: #eaecf0;
+    --sidebar-item-idle: #334155;
+    --sidebar-item-hover: #f2f4f7;
+    --sidebar-item-active-bg: #4f46e5;
+    --sidebar-item-active-text: #ffffff;
+    /* Header: glassmorphism halus dengan latar #ffffff */
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --header-border: #eaecf0;
+  }
+
+  body {
+    @apply bg-[#f2f4f7] font-sans antialiased text-slate-900 selection:bg-indigo-600 selection:text-white overflow-x-hidden;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  button {
+    min-height: 2.75rem;
+  }
+
+  :focus-visible {
+    outline: 3px solid rgba(79, 70, 229, 0.7);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .pasca-login {
+    background: var(--warna-latar-aplikasi);
+    color: var(--warna-teks);
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  .pasca-login__main {
+    background: var(--warna-latar-aplikasi);
+    transition: background-color 0.25s ease;
+  }
+
+  .pasca-login__content {
+    background: var(--warna-latar-aplikasi);
+    scroll-behavior: smooth;
+    transition: background-color 0.25s ease;
+  }
+
+  .pasca-login__header {
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .kartu-modern {
+    background-color: var(--warna-kartu);
+    border: 1px solid var(--warna-garis);
+    color: var(--warna-teks);
+    border-radius: 1.25rem;
+    box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, background-color 0.25s ease;
+  }
+
+  .kartu-modern:hover {
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  }
+
+  /* Badge Kehadiran Modern (Pill with Indicator) */
+  .pill-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.025em;
+    transition: all 0.15s ease;
+  }
+  .pill-hadir {
+    background-color: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+  }
+
+  .pill-sakit {
+    background-color: #fffbeb;
+    color: #92400e;
+    border: 1px solid #fde68a;
+  }
+
+  .pill-izin {
+    background-color: #f0f9ff;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+  }
+
+  .pill-alpa {
+    background-color: #fff1f2;
+    color: #9f1239;
+    border: 1px solid #fecdd3;
+  }
+
+  .pasca-login__content > * {
+    min-width: 0;
+    animation: naik-lembut 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .pasca-login button,
+  .pasca-login input,
+  .pasca-login select,
+  .pasca-login textarea {
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+  }
+
+  .pasca-login input,
+  .pasca-login select,
+  .pasca-login textarea {
+    color: var(--warna-teks);
+  }
+
+  .pasca-login input::placeholder,
+  .pasca-login textarea::placeholder {
+    color: var(--warna-teks-redup);
+    opacity: 0.8;
+  }
+
+  .pasca-login :disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .pasca-login .tombol-taktil,
+  .taktil-klik {
+    transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease, filter 0.15s ease;
+  }
+
+  .pasca-login .tombol-taktil:hover,
+  .taktil-klik:hover {
+    transform: translateY(-1.5px);
+  }
+
+  .pasca-login .tombol-taktil:active,
+  .taktil-klik:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  .hover-lift {
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+  }
+
+  .animasi-masuk {
+    animation: masuk-lembut 0.35s ease-out both;
+  }
+
+  .animasi-naik {
+    animation: naik-lembut 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animasi-denyut-halus {
+    animation: denyut-halus 3s ease-in-out infinite;
+  }
+
+  .fokus-terlihat:focus-visible {
+    outline: 3px solid rgba(79, 70, 229, 0.7);
+    outline-offset: 2px;
+  }
+
+  .pasca-login__sidebar {
+    background: var(--sidebar-bg) !important;
+    color: var(--warna-teks);
+    border-right: 1px solid var(--sidebar-border) !important;
+    box-shadow: 2px 0 20px rgba(15, 23, 42, 0.06), 1px 0 4px rgba(15, 23, 42, 0.03) !important;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .pasca-login__sidebar .sidebar-item-idle {
+    color: var(--sidebar-item-idle);
+  }
+
+  .pasca-login__sidebar .sidebar-item-idle:hover {
+    background: var(--sidebar-item-hover);
+    color: #4f46e5;
+  }
+
+  .pasca-login__sidebar .sidebar-item-active {
+    background: #4f46e5;
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+  }
+
+  .pasca-login__sidebar .sidebar-item-active .sidebar-icon {
+    color: #ffffff;
+  }
+
+  .pasca-login__sidebar .sidebar-section-title {
+    color: var(--warna-teks-redup);
+  }
+
+  .pasca-login__header input {
+    border: 1px solid var(--warna-garis);
+    background: var(--warna-kartu);
+    color: var(--warna-teks);
+  }
+
+  .pasca-login__header .header-muted {
+    color: var(--warna-teks-redup);
+  }
+
+  .pasca-login__header .header-title {
+    color: var(--warna-teks);
+  }
+}
+
+@media screen {
+  .pasca-login .text-slate-400 {
+    color: #475569;
+  }
+
+  .pasca-login [class~="placeholder:text-slate-400"]::placeholder,
+  .pasca-login [class~="placeholder-slate-400"]::placeholder,
+  .background [class~="placeholder:text-slate-400"]::placeholder,
+  .background [class~="placeholder-slate-400"]::placeholder {
+    color: #475569;
+    opacity: 1;
+  }
+
+  .pasca-login [class~="text-[10px]"],
+  .pasca-login [class~="text-[11px]"] {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+}
+
+/* Keyframe Animasi Ringan, Modern & Efisien */
+@keyframes masuk-lembut {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes naik-lembut {
+  from { opacity: 0; transform: translateY(10px) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes denyut-halus {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+  50% { box-shadow: 0 0 0 6px rgba(79, 70, 229, 0.12); }
+}
+
+/* Animasi Sinar Laser Scanner Presensi (High-Tech HUD) */
+@keyframes laser-sweep {
+  0% {
+    top: 6%;
+    opacity: 0.3;
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    top: 90%;
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    top: 6%;
+    opacity: 0.3;
+  }
+}
+
+.animate-laser-sweep {
+  animation: laser-sweep 2.4s ease-in-out infinite;
+}
+
+/* HUD Viewfinder Scanner Brackets */
+.scanner-hud-corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: #38bdf8;
+  pointer-events: none;
+  z-index: 10;
+  transition: border-color 0.25s ease;
+}
+.scanner-hud-corner.tl {
+  top: 14px;
+  left: 14px;
+  border-top-width: 3.5px;
+  border-left-width: 3.5px;
+  border-top-left-radius: 10px;
+}
+.scanner-hud-corner.tr {
+  top: 14px;
+  right: 14px;
+  border-top-width: 3.5px;
+  border-right-width: 3.5px;
+  border-top-right-radius: 10px;
+}
+.scanner-hud-corner.bl {
+  bottom: 14px;
+  left: 14px;
+  border-bottom-width: 3.5px;
+  border-left-width: 3.5px;
+  border-bottom-left-radius: 10px;
+}
+.scanner-hud-corner.br {
+  bottom: 14px;
+  right: 14px;
+  border-bottom-width: 3.5px;
+  border-right-width: 3.5px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Efek Glass Card Elegan & Modern */
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: 0 12px 28px -5px rgba(99, 102, 241, 0.12), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+}
+
+/* Glow Card Ring Halus */
+@keyframes glow-kelip {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.15), 0 0 0 1px rgba(99, 102, 241, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(99, 102, 241, 0.35), 0 0 0 2px rgba(99, 102, 241, 0.3);
+  }
+}
+
+.glow-card-active {
+  animation: glow-kelip 3s ease-in-out infinite;
+}
+
+/* Gelombang Cahaya Shimmer Skeleton (Loading Modern) */
+@keyframes kilau-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(226, 232, 240, 0.6) 0%,
+    rgba(241, 245, 249, 0.9) 50%,
+    rgba(226, 232, 240, 0.6) 100%
+  );
+  background-size: 200% 100%;
+  animation: kilau-shimmer 1.8s ease-in-out infinite;
+}
+
+/* Tombol Taktil Pegas Halus (Micro-Interaction) */
+.btn-taktil,
+.tombol-taktil,
+.taktil-klik {
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s ease, filter 0.18s ease;
+  will-change: transform;
+}
+
+.btn-taktil:hover,
+.tombol-taktil:hover,
+.taktil-klik:hover {
+  transform: translateY(-1.5px);
+}
+
+.btn-taktil:active,
+.tombol-taktil:active,
+.taktil-klik:active {
+  transform: translateY(0.5px) scale(0.975);
+}
+
+/* Animasi Muncul Bertingkat untuk Baris Tabel (Staggered Entry) */
+.baris-stagger {
+  animation: masuk-lembut 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Titik Indikator Live Pulse Halus */
+.dot-live-pulse {
+  position: relative;
+  display: inline-flex;
+}
+.dot-live-pulse::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 9999px;
+  background-color: rgba(16, 185, 129, 0.4);
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========================================================
+   SISTEM SKALA UKURAN FONT GLOBAL (A, A+, A++)
+   Berlaku harmonis ke seluruh elemen rem tanpa tabrakan spesifisitas
+   ======================================================== */
+html.skala-normal,
+html:not(.skala-besar):not(.skala-ekstra) {
+  font-size: 16px;
+}
+
+html.skala-besar {
+  font-size: 18px; /* +12.5% peningkatan ukuran menyeluruh */
+}
+
+html.skala-ekstra {
+  font-size: 20.5px; /* +28% peningkatan ukuran menyeluruh (Sangat Besar & Jelas) */
+}
+
+/* Ketebalan font ditingkatkan pada A+ dan A++ untuk kemudahan membaca lansia / penderita mata lelah */
+html.skala-besar body,
+html.skala-ekstra body {
+  -webkit-font-smoothing: antialiased;
+}
+
+html.skala-besar .text-xs,
+html.skala-besar [class*="text-[10px]"],
+html.skala-besar [class*="text-[11px]"] {
+  font-weight: 700;
+}
+
+html.skala-ekstra .text-xs,
+html.skala-ekstra [class*="text-[10px]"],
+html.skala-ekstra [class*="text-[11px]"] {
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+/* Proteksi kartu fisik cetak (CR80) agar ukuran tetap akurat 85.6mm x 54mm */
+.kartu-absensi,
+.kartu-cetak {
+  font-size: 16px !important;
+}
+
+/* Sembunyikan badge reCAPTCHA v3 di UI */
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
+
+/* Scrollbar Modern & Elegan */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Zebra striping dan batas kontras tajam untuk tabel */
+.tabel-kontras-tinggi tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.tabel-kontras-tinggi tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+.tabel-kontras-tinggi th {
+  color: #1e293b;
+}
+
+.tabel-kontras-tinggi td,
+.tabel-kontras-tinggi th {
+  line-height: 1.5;
+}
+
+@media print {
+  @page {
+    size: auto;
+    margin: 10mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  /* Sembunyikan elemen navigasi, kontrol, sidebar, header, tombol, dan elemen bertanda print:hidden */
+  .pasca-login__sidebar,
+  .pasca-login__header,
+  .tanda-tidak-cetak,
+  button,
+  nav,
+  aside,
+  header {
+    display: none !important;
+  }
+
+  /* Kontainer lembar cetak kode presensi siswa yang bersih dan presisi */
+  .area-cetak-presensi {
+    display: block !important;
+    width: 100% !important;
+    max-width: 90mm !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+}
+
+/* Background login dan pemuat awal */
+.background {
+  min-height: 100vh;
+  background-color: #0B1222;
+  background-image: radial-gradient(
+    circle,
+    rgba(100, 125, 160, 0.30) 1px,
+    transparent 1.3px
+  );
+  background-size: 24px 24px;
+  background-position: 13px 5px;
+}
+
+/* Animasi Top Slim Progress Bar (YouTube / Vercel style) */
+@keyframes geser-progress {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-geser-progress {
+  animation: geser-progress 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}

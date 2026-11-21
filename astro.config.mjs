@@ -1,0 +1,19 @@
+import react from '@astrojs/react';
+import vue from '@astrojs/vue';
+import { defineConfig } from 'astro/config';
+import { fileURLToPath } from 'node:url';
+
+export default defineConfig({
+  output: 'static',
+  integrations: [react(), vue()],
+  vite: {
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+      },
+    },
+    build: {
+      sourcemap: false,
+    },
+  },
+});

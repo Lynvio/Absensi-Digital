@@ -1,0 +1,123 @@
+---
+import '../gaya/utama.css';
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Absensi Digital Sekolah</title>
+    <meta
+      name="description"
+      content="Sistem Presensi Digital Sekolah - Platform presensi terpadu dan modern untuk siswa dan guru."
+    />
+    <meta name="theme-color" content="#4f46e5" />
+    <link rel="canonical" href="https://absensi.sekolah.sch.id/" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <link rel="icon" type="image/svg+xml" href="/assets/logo/logo-sekolah.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://script.google.com" />
+    <link rel="preconnect" href="https://script.google.com" crossorigin />
+    <link rel="dns-prefetch" href="https://script.googleusercontent.com" />
+    <link
+      id="font-inter"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+      media="print"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    <script is:inline defer src="/config.js?v=20261018"></script>
+    <script is:inline defer>
+      window.addEventListener('DOMContentLoaded', function () {
+        var fontStylesheet = document.getElementById('font-inter');
+        if (fontStylesheet) fontStylesheet.media = 'all';
+
+        var siteKey = (window.APP_CONFIG && window.APP_CONFIG.RECAPTCHA_SITE_KEY) || '';
+        if (siteKey) {
+          var script = document.createElement('script');
+          script.src =
+            'https://www.google.com/recaptcha/api.js?render=' + encodeURIComponent(siteKey);
+          script.async = true;
+          document.body.appendChild(script);
+        }
+      });
+    </script>
+    <style is:global>
+      @keyframes pulse-lembut {
+        0%,
+        100% {
+          opacity: 0.9;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.97);
+        }
+      }
+
+      .pemuat-awal {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        font-family: 'Inter', system-ui, sans-serif;
+        color: #1e293b;
+        background-color: #f2f4f7;
+      }
+
+      .logo-pemuat {
+        width: 72px;
+        height: 72px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        animation: pulse-lembut 2s infinite ease-in-out;
+        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
+      }
+
+      .shimmer-bar {
+        position: relative;
+        width: 140px;
+        height: 6px;
+        overflow: hidden;
+        border-radius: 9999px;
+        background: #e2e8f0;
+      }
+
+      .shimmer-bar::after {
+        position: absolute;
+        inset: 0;
+        transform: translateX(-100%);
+        background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.8), transparent);
+        animation: geser-shimmer 1.5s infinite;
+        content: '';
+      }
+
+      @keyframes geser-shimmer {
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .logo-pemuat,
+        .shimmer-bar::after {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="overflow-x-hidden bg-[#f2f4f7] font-sans antialiased text-slate-900 selection:bg-indigo-600 selection:text-white"
+  >
+    <slot />
+    <script is:inline defer src="/security/protect.js"></script>
+  </body>
+</html>
